@@ -10,17 +10,18 @@ function promisifyGM(gmO) {
     })
 }
 const cachepath = 'cache/helper'
+const assetspath = 'node_modules/nodebot-module-helper/assets'
 export async function drawHelp(name, help) {
     const dest = `${cachepath}/${name}.jpg`
     const description = []
-    copyFileSync(`assets/helper/image/template.jpg`, dest)
+    copyFileSync(`${assetspath}/image/template.jpg`, dest)
     help.description = help.description.split('\n').map(i => i.split(''))
     for (let i of help.description)
         while (i.length) description.push(i.splice(0, 20).join(''))
     await promisifyGM(
         gm(dest)
         .quality(100)
-        .font('assets/helper/fonts/Microsoft-YaHei.ttc')
+        .font(`${assetspath}/fonts/Microsoft-YaHei.ttc`)
         .fill('#777')
         .fontSize(50)
         .drawText(0, 50, help.name)
@@ -44,11 +45,11 @@ export async function drawHelp(name, help) {
 }
 export async function drawHelpList(list) {
     const dest = `${cachepath}/_main.jpg`
-    copyFileSync(`assets/helper/image/template.jpg`, dest)
+    copyFileSync(`${assetspath}/image/template.jpg`, dest)
     await promisifyGM(
         gm(dest)
         .quality(100)
-        .font('assets/helper/fonts/Microsoft-YaHei.ttc')
+        .font(`${assetspath}/fonts/Microsoft-YaHei.ttc`)
         .fill('#777')
         .fontSize(50)
         .drawText(0, 50, '帮助中心')
@@ -59,7 +60,7 @@ export async function drawHelpList(list) {
         .fontSize(15)
         .drawText(20, 2, '使用 -help <命令名称> 来查询帮助。')
         .gravity('NorthWest')
-        .font('assets/helper/fonts/Exo2.0-Medium.otf')
+        .font(`${assetspath}/fonts/Exo2.0-Medium.otf`)
         .fill('#fff')
         .fontSize(20)
         .drawText(20, 110, list.slice(0, 10).map(i => `› ${i}`).join('\n'))
