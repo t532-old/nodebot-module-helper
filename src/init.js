@@ -9,7 +9,7 @@ function initializeHelp() {
         const helperFiles = safeLoad(readFileSync(`node_modules/nodebot-module-${i}/helper.yml`))
         topicList = [...topicList, ...Object.keys(helperFiles)]
         for (let j of Object.keys(helperFiles)) {
-            drawHelp(j, parseHelp(readFileSync(`node-modules/nodebot-module-${i}/${helperFiles[j]}`, 'utf-8')))
+            drawHelp(j, parseHelp(readFileSync(`node_modules/nodebot-module-${i}/${helperFiles[j]}`, 'utf-8')))
         }
     }
     drawHelpList(topicList)
