@@ -11,7 +11,7 @@
     "build": "babel src -d dist -s --verbose",
     "prepare": "npm run build"
   },
-  "files": ["*.json", ".babelrc", ".gitignore", ".npmrc", "*.md", "dist/", "src/", "bin/", "assets/", "config/"],
+  "files": ["helper/", "LICENSE", "*.yml", "*.json", ".babelrc", ".gitignore", ".npmrc", "*.md", "dist/", "src/", "bin/", "assets/", "config/"],
   "author": "trustgit",
   "license": "MIT",
   "bugs": {
